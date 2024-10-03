@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { loadToolGuides, Guide } from "@/utils/loadGuides";
 import { useEffect, useState } from "react";
@@ -10,10 +10,16 @@ import { ToolGrid } from "@/components/ToolGrid";
 export const Tool = () => {
   const { tool } = useParams<{ tool: string }>();
   const [guides, setGuides] = useState<Guide[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const guides = loadToolGuides(tool);
-    setGuides(guides);
+    const guides = loadToolGuides(tool!);
+
+    if (guides.length > 0) {
+      setGuides(guides);
+    } else {
+      navigate("/");
+    }
   }, []);
 
   return (
@@ -28,7 +34,7 @@ export const Tool = () => {
               className="h-8 w-auto mr-4"
             />
             <h2 className="text-4xl font-bold">
-              {tool.charAt(0).toUpperCase() + tool.slice(1)}
+              {tool!.charAt(0).toUpperCase() + tool!.slice(1)}
             </h2>
           </div>
           <Button variant="link" className="mt-4 md:mt-0 md:ml-auto">
@@ -40,7 +46,7 @@ export const Tool = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          <ToolGrid tool={tool} guides={guides} />
+          <ToolGrid tool={tool!} guides={guides} />
 
           <div className="w-full lg:w-64 space-y-6 mt-8 lg:mt-0"></div>
         </div>

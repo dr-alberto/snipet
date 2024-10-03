@@ -1,9 +1,9 @@
 import React from "react";
-import { Guide, Tool } from "@/utils/loadGuides";
+import { Guide } from "@/utils/loadGuides";
 
 interface ToolGridProps {
   guides: Guide[];
-  tool: Tool;
+  tool: string;
 }
 
 export const ToolGrid: React.FC<ToolGridProps> = ({ tool, guides }) => {

@@ -48,12 +48,12 @@ export const Guide = () => {
               className="h-8 w-auto mr-4"
             />
             <h2 className="text-4xl font-bold">
-              {tool.charAt(0).toUpperCase() + tool.slice(1)}
+              {tool!.charAt(0).toUpperCase() + tool!.slice(1)}
             </h2>
           </div>
           <Button variant="link" className="mt-4 md:mt-0 md:ml-auto">
             <Link to={`/guides/${tool}`} className="flex items-center gap-x-2">
-              More {tool.charAt(0).toUpperCase() + tool.slice(1)} guides
+              More {tool!.charAt(0).toUpperCase() + tool!.slice(1)} guides
               <ChevronsRight className="w-4" />
             </Link>
           </Button>
