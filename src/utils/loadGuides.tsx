@@ -10,14 +10,14 @@ export interface Tool {
   logo: string;
 }
 
-export const guides = import.meta.glob("../guides/**/*.md", {
+export const guides = import.meta.glob("/public/guides/**/*.md", {
   eager: true,
 }) as Record<string, { default: string }>;
 
 export const loadGuides = (): Guide[] => {
   return Object.keys(guides).map((path) => {
     const fileName = path.split("/").pop()?.replace(".md", "") || ""; // Extract the title
-    const parentFolder = path.split("/")[2]; // Adjust based on your folder structure
+    const parentFolder = path.split("/")[3]; // Adjust based on your folder structure
     const title = fileName.replaceAll("-", " ");
 
     return {

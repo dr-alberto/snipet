@@ -24,7 +24,7 @@ export const Home = () => {
 
       {/* Main content */}
       <main className="flex-grow flex flex-col items-center p-4 mt-48">
-        <h1 className="text-6xl mb-2 text-gray-800">Snipet</h1>
+        <h1 className="text-6xl mb-2 text-gray-800">Snipets</h1>
         <p className="text-xl text-gray-600 mb-8 text-center max-w-md">
           Find and copy common development snippets to use in your documentation
         </p>

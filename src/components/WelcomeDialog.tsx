@@ -35,7 +35,7 @@ export const WelcomeDialog: React.FC<WelcomeDialogProps> = ({
           />
           <DialogHeader className="px-8 mb-8">
             <DialogTitle className="text-2xl font-bold text-center text-gray-800">
-              Welcome to Snipet
+              Welcome to Snipets
             </DialogTitle>
             <DialogDescription className="text-center text-gray-600 mb-4">
               Quickly find and copy common development snippets to supercharge

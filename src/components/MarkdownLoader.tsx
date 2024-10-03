@@ -81,9 +81,22 @@ const MarkdownLoader: React.FC<MarkdownLoaderProps> = ({
   useEffect(() => {
     const loadMarkdown = async () => {
       try {
-        const fileName = `../guides/${filename}.md?raw`;
-        const markdownFile = await import(fileName);
-        const rawMarkdown = markdownFile.default;
+        const fileName = `/guides/${filename}.md`;
+        const response = await fetch(fileName);
+
+        if (!response.ok) {
+          throw new Error(
+            `Failed to load markdown file: ${response.status} ${response.statusText}`
+          );
+        }
+
+        const rawMarkdown = await response.text();
+
+        // Check if the response is actually a markdown file by validating the content type
+        const contentType = response.headers.get("Content-Type");
+        if (!contentType || !contentType.includes("text/markdown")) {
+          throw new Error(`Expected markdown file, but got: ${contentType}`);
+        }
 
         // Parse the front matter (metadata) and markdown content
         const { metadata, content: markdownContent } =

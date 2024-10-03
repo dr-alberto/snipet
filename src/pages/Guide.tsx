@@ -32,7 +32,7 @@ export const Guide = () => {
 
   useEffect(() => {
     if (metadata.header) {
-      document.title = `${metadata.header} · Snipet`; // Change page title
+      document.title = `${metadata.header} · Snipets`; // Change page title
     }
   }, [metadata.header]);
 
